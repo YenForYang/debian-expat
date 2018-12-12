@@ -1,0 +1,12 @@
+Package: expat-dbgsym
+Source: expat
+Version: 2.2.6-1
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Laszlo Boszormenyi (GCS) <gcs@debian.org>
+Installed-Size: 37
+Depends: expat (= 2.2.6-1)
+Section: debug
+Priority: optional
+Description: debug symbols for expat
+Build-Ids: 4bc69ce5bb36a486027e64d8a923974578a326ad

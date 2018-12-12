@@ -1,0 +1,727 @@
+ dpkg-buildpackage -D -us -uc -ui -b -Jauto -Pnobiarch,nocheck
+dpkg-buildpackage: info: source package expat
+dpkg-buildpackage: info: source version 2.2.6-1
+dpkg-buildpackage: info: source distribution unstable
+dpkg-buildpackage: info: source changed by Laszlo Boszormenyi (GCS) <gcs@debian.org>
+ dpkg-source --before-build .
+dpkg-buildpackage: info: host architecture amd64
+ fakeroot debian/rules clean
+dh_testdir
+dh_testroot
+rm -rf src/ srcw/
+rm -rf build/ buildw/
+rm -rf debian/tmp/
+dh_autoreconf_clean
+dh_clean config-common-stamp build-stamp debian/xmlwf.1
+ERROR: ld.so: object 'libfakeroot-sysv.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ debian/rules build
+dh_testdir
+rm -rf /home/richard/debs/NONGIT/expat/expat-2.2.6/src /home/richard/debs/NONGIT/expat/expat-2.2.6/srcw
+mkdir -p /home/richard/debs/NONGIT/expat/expat-2.2.6/src /home/richard/debs/NONGIT/expat/expat-2.2.6/srcw
+tar cf - expat/* | tar --strip-components=1 -C /home/richard/debs/NONGIT/expat/expat-2.2.6/src   -xf -
+tar cf - expat/* | tar --strip-components=1 -C /home/richard/debs/NONGIT/expat/expat-2.2.6/srcw -xf -
+sed -i -e "s,libexpat\.la,libexpatw.la," \
+	-e "s,libexpat_la,libexpatw_la," \
+	$(find srcw -name Makefile.am)
+cd /home/richard/debs/NONGIT/expat/expat-2.2.6/src ; ./buildconf.sh
+aclocal: warning: couldn't open directory 'm4': No such file or directory
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'conftools'.
+libtoolize: copying file 'conftools/ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+libtoolize: copying file 'm4/libtool.m4'
+libtoolize: copying file 'm4/ltoptions.m4'
+libtoolize: copying file 'm4/ltsugar.m4'
+libtoolize: copying file 'm4/ltversion.m4'
+libtoolize: copying file 'm4/lt~obsolete.m4'
+configure.ac:59: installing 'conftools/compile'
+configure.ac:58: installing 'conftools/config.guess'
+configure.ac:58: installing 'conftools/config.sub'
+configure.ac:34: installing 'conftools/install-sh'
+configure.ac:34: installing 'conftools/missing'
+examples/Makefile.am: installing 'conftools/depcomp'
+parallel-tests: installing 'conftools/test-driver'
+cd /home/richard/debs/NONGIT/expat/expat-2.2.6/srcw; ./buildconf.sh
+aclocal: warning: couldn't open directory 'm4': No such file or directory
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'conftools'.
+libtoolize: copying file 'conftools/ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+libtoolize: copying file 'm4/libtool.m4'
+libtoolize: copying file 'm4/ltoptions.m4'
+libtoolize: copying file 'm4/ltsugar.m4'
+libtoolize: copying file 'm4/ltversion.m4'
+libtoolize: copying file 'm4/lt~obsolete.m4'
+configure.ac:59: installing 'conftools/compile'
+configure.ac:58: installing 'conftools/config.guess'
+configure.ac:58: installing 'conftools/config.sub'
+configure.ac:34: installing 'conftools/install-sh'
+configure.ac:34: installing 'conftools/missing'
+examples/Makefile.am: installing 'conftools/depcomp'
+parallel-tests: installing 'conftools/test-driver'
+touch config-common-stamp
+dh_testdir
+(mkdir -p build; cd build; CFLAGS="`dpkg-buildflags --get CFLAGS` -Wall" CPPFLAGS="`dpkg-buildflags --get CPPFLAGS`" LDFLAGS="-Wl,-Bsymbolic-functions `dpkg-buildflags --get LDFLAGS`" \
+ ../src/configure --build=x86_64-linux-gnu --prefix=/usr --mandir=\${prefix}/share/man --libdir=\${prefix}/lib/x86_64-linux-gnu)
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking how to print strings... printf
+checking whether make supports the include directive... yes (GNU style)
+checking for gcc... icc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether icc accepts -g... yes
+checking for icc option to accept ISO C89... none needed
+checking whether icc understands -c and -o together... yes
+checking dependency style of icc... gcc3
+checking for a sed that does not truncate output... /bin/sed
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for fgrep... /bin/grep -F
+checking for ld used by icc... xild
+checking if the linker (xild) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for xild option to reload object files... -r
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... dlltool
+checking how to associate runtime and link libraries... printf %s\n
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from icc object... ok
+checking for sysroot... no
+checking for a working dd... /bin/dd
+checking how to truncate binary pipes... /bin/dd bs=4096 count=1
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking how to run the C preprocessor... icc -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if icc supports -fno-rtti -fno-exceptions... yes
+checking for icc option to produce PIC... -fPIC -DPIC
+checking if icc PIC flag -fPIC -DPIC works... yes
+checking if icc static flag -static works... no
+checking if icc supports -c -o file.o... yes
+checking if icc supports -c -o file.o... (cached) yes
+checking whether the icc linker (xild -m elf_x86_64) supports shared libraries... xild: warning #10013: no objects specified for multi-file optimization
+xild: executing 'ld'
+yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking for icc option to accept ISO C99... none needed
+checking whether we are using the GNU C++ compiler... yes
+checking whether icpc accepts -g... yes
+checking dependency style of icpc... gcc3
+checking how to run the C++ preprocessor... icpc -E
+checking for ld used by icpc... xild -m elf_x86_64
+checking if the linker (xild -m elf_x86_64) is GNU ld... yes
+checking whether the icpc linker (xild -m elf_x86_64) supports shared libraries... yes
+checking for icpc option to produce PIC... -fPIC -DPIC
+checking if icpc PIC flag -fPIC -DPIC works... yes
+checking if icpc static flag -static works... no
+checking if icpc supports -c -o file.o... yes
+checking if icpc supports -c -o file.o... (cached) yes
+checking whether the icpc linker (xild -m elf_x86_64) supports shared libraries... yes
+checking dynamic linker characteristics... (cached) GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether icc accepts -fexceptions... yes
+checking for ANSI C header files... (cached) yes
+checking whether byte ordering is bigendian... no
+checking for an ANSI C-conforming const... yes
+checking for size_t... yes
+checking for memmove... yes
+checking for bcopy... yes
+checking for arc4random_buf (BSD or libbsd)... no
+checking for arc4random (BSD, macOS or libbsd)... no
+checking for getrandom (Linux 3.17+, glibc 2.25+)... yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking for unistd.h... (cached) yes
+checking for off_t... yes
+checking for stdlib.h... (cached) yes
+checking for unistd.h... (cached) yes
+checking for sys/param.h... yes
+checking for getpagesize... yes
+checking for working mmap... yes
+checking for docbook2x-man... docbook2x-man
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating expat.pc
+config.status: creating doc/Makefile
+config.status: creating examples/Makefile
+config.status: creating lib/Makefile
+config.status: creating tests/Makefile
+config.status: creating tests/benchmark/Makefile
+config.status: creating xmlwf/Makefile
+config.status: creating run.sh
+config.status: creating expat_config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+dh_testdir
+(mkdir -p buildw; cd buildw; CFLAGS="`dpkg-buildflags --get CFLAGS` -Wall -DXML_UNICODE" CPPFLAGS="`dpkg-buildflags --get CPPFLAGS`" LDFLAGS="-Wl,-Bsymbolic-functions `dpkg-buildflags --get LDFLAGS`" \
+ ../srcw/configure --build=x86_64-linux-gnu --prefix=/usr --mandir=\${prefix}/share/man --libdir=\${prefix}/lib/x86_64-linux-gnu)
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking how to print strings... printf
+checking whether make supports the include directive... yes (GNU style)
+checking for gcc... icc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether icc accepts -g... yes
+checking for icc option to accept ISO C89... none needed
+checking whether icc understands -c and -o together... yes
+checking dependency style of icc... gcc3
+checking for a sed that does not truncate output... /bin/sed
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for fgrep... /bin/grep -F
+checking for ld used by icc... xild
+checking if the linker (xild) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for xild option to reload object files... -r
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... dlltool
+checking how to associate runtime and link libraries... printf %s\n
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from icc object... ok
+checking for sysroot... no
+checking for a working dd... /bin/dd
+checking how to truncate binary pipes... /bin/dd bs=4096 count=1
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking how to run the C preprocessor... icc -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if icc supports -fno-rtti -fno-exceptions... yes
+checking for icc option to produce PIC... -fPIC -DPIC
+checking if icc PIC flag -fPIC -DPIC works... yes
+checking if icc static flag -static works... no
+checking if icc supports -c -o file.o... yes
+checking if icc supports -c -o file.o... (cached) yes
+checking whether the icc linker (xild -m elf_x86_64) supports shared libraries... xild: warning #10013: no objects specified for multi-file optimization
+xild: executing 'ld'
+yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking for icc option to accept ISO C99... none needed
+checking whether we are using the GNU C++ compiler... yes
+checking whether icpc accepts -g... yes
+checking dependency style of icpc... gcc3
+checking how to run the C++ preprocessor... icpc -E
+checking for ld used by icpc... xild -m elf_x86_64
+checking if the linker (xild -m elf_x86_64) is GNU ld... yes
+checking whether the icpc linker (xild -m elf_x86_64) supports shared libraries... yes
+checking for icpc option to produce PIC... -fPIC -DPIC
+checking if icpc PIC flag -fPIC -DPIC works... yes
+checking if icpc static flag -static works... no
+checking if icpc supports -c -o file.o... yes
+checking if icpc supports -c -o file.o... (cached) yes
+checking whether the icpc linker (xild -m elf_x86_64) supports shared libraries... yes
+checking dynamic linker characteristics... (cached) GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether icc accepts -fexceptions... yes
+checking for ANSI C header files... (cached) yes
+checking whether byte ordering is bigendian... no
+checking for an ANSI C-conforming const... yes
+checking for size_t... yes
+checking for memmove... yes
+checking for bcopy... yes
+checking for arc4random_buf (BSD or libbsd)... no
+checking for arc4random (BSD, macOS or libbsd)... no
+checking for getrandom (Linux 3.17+, glibc 2.25+)... yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking for unistd.h... (cached) yes
+checking for off_t... yes
+checking for stdlib.h... (cached) yes
+checking for unistd.h... (cached) yes
+checking for sys/param.h... yes
+checking for getpagesize... yes
+checking for working mmap... yes
+checking for docbook2x-man... docbook2x-man
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating expat.pc
+config.status: creating doc/Makefile
+config.status: creating examples/Makefile
+config.status: creating lib/Makefile
+config.status: creating tests/Makefile
+config.status: creating tests/benchmark/Makefile
+config.status: creating xmlwf/Makefile
+config.status: creating run.sh
+config.status: creating expat_config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+dh_testdir
+/usr/bin/make -j 8 -C build/
+make[1]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build'
+/usr/bin/make  all-recursive
+make[2]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build'
+Making all in lib
+make[3]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/lib'
+/bin/bash ../libtool  --tag=CC   --mode=compile icc -DHAVE_CONFIG_H -I. -I../../src/lib -I..   -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT loadlibrary.lo -MD -MP -MF .deps/loadlibrary.Tpo -c -o loadlibrary.lo ../../src/lib/loadlibrary.c
+/bin/bash ../libtool  --tag=CC   --mode=compile icc -DHAVE_CONFIG_H -I. -I../../src/lib -I..   -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmlparse.lo -MD -MP -MF .deps/xmlparse.Tpo -c -o xmlparse.lo ../../src/lib/xmlparse.c
+/bin/bash ../libtool  --tag=CC   --mode=compile icc -DHAVE_CONFIG_H -I. -I../../src/lib -I..   -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmltok.lo -MD -MP -MF .deps/xmltok.Tpo -c -o xmltok.lo ../../src/lib/xmltok.c
+/bin/bash ../libtool  --tag=CC   --mode=compile icc -DHAVE_CONFIG_H -I. -I../../src/lib -I..   -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmlrole.lo -MD -MP -MF .deps/xmlrole.Tpo -c -o xmlrole.lo ../../src/lib/xmlrole.c
+libtool: compile:  icc -DHAVE_CONFIG_H -I. -I../../src/lib -I.. -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmlparse.lo -MD -MP -MF .deps/xmlparse.Tpo -c ../../src/lib/xmlparse.c  -fPIC -DPIC -o .libs/xmlparse.o
+libtool: compile:  icc -DHAVE_CONFIG_H -I. -I../../src/lib -I.. -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT loadlibrary.lo -MD -MP -MF .deps/loadlibrary.Tpo -c ../../src/lib/loadlibrary.c  -fPIC -DPIC -o .libs/loadlibrary.o
+libtool: compile:  icc -DHAVE_CONFIG_H -I. -I../../src/lib -I.. -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmlrole.lo -MD -MP -MF .deps/xmlrole.Tpo -c ../../src/lib/xmlrole.c  -fPIC -DPIC -o .libs/xmlrole.o
+libtool: compile:  icc -DHAVE_CONFIG_H -I. -I../../src/lib -I.. -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmltok.lo -MD -MP -MF .deps/xmltok.Tpo -c ../../src/lib/xmltok.c  -fPIC -DPIC -o .libs/xmltok.o
+libtool: compile:  icc -DHAVE_CONFIG_H -I. -I../../src/lib -I.. -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT loadlibrary.lo -MD -MP -MF .deps/loadlibrary.Tpo -c ../../src/lib/loadlibrary.c -o loadlibrary.o >/dev/null 2>&1
+libtool: compile:  icc -DHAVE_CONFIG_H -I. -I../../src/lib -I.. -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmlrole.lo -MD -MP -MF .deps/xmlrole.Tpo -c ../../src/lib/xmlrole.c -o xmlrole.o >/dev/null 2>&1
+mv -f .deps/loadlibrary.Tpo .deps/loadlibrary.Plo
+mv -f .deps/xmlrole.Tpo .deps/xmlrole.Plo
+libtool: compile:  icc -DHAVE_CONFIG_H -I. -I../../src/lib -I.. -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmlparse.lo -MD -MP -MF .deps/xmlparse.Tpo -c ../../src/lib/xmlparse.c -o xmlparse.o >/dev/null 2>&1
+libtool: compile:  icc -DHAVE_CONFIG_H -I. -I../../src/lib -I.. -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmltok.lo -MD -MP -MF .deps/xmltok.Tpo -c ../../src/lib/xmltok.c -o xmltok.o >/dev/null 2>&1
+mv -f .deps/xmlparse.Tpo .deps/xmlparse.Plo
+mv -f .deps/xmltok.Tpo .deps/xmltok.Plo
+/bin/bash ../libtool  --tag=CC   --mode=link icc  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -no-undefined -version-info 7:8:6 -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,--as-needed,--gc-sections,--print-gc-sections,--print-memory-usage,--stats -fno-strict-aliasing -o libexpat.la -rpath /usr/lib/x86_64-linux-gnu loadlibrary.lo xmlparse.lo xmltok.lo xmlrole.lo  
+libtool: link: icc -shared  -fPIC -DPIC  .libs/loadlibrary.o .libs/xmlparse.o .libs/xmltok.o .libs/xmlrole.o    -g -O2 -fstack-protector-strong -march=native -Wl,-Bsymbolic-functions -Wl,-z -Wl,relro -Wl,--as-needed -Wl,--gc-sections -Wl,--print-gc-sections -Wl,--print-memory-usage -Wl,--stats   -Wl,-soname -Wl,libexpat.so.1 -o .libs/libexpat.so.1.6.8
+icc: warning #10237: -lcilkrts linked in dynamically, static library not available
+Memory region         Used Size  Region Size  %age Used
+ld: total time in link: 0.134927
+libtool: link: (cd ".libs" && rm -f "libexpat.so.1" && ln -s "libexpat.so.1.6.8" "libexpat.so.1")
+libtool: link: (cd ".libs" && rm -f "libexpat.so" && ln -s "libexpat.so.1.6.8" "libexpat.so")
+libtool: link: xiar cru .libs/libexpat.a  loadlibrary.o xmlparse.o xmltok.o xmlrole.o
+xiar: executing 'ar'
+ar: `u' modifier ignored since `D' is the default (see `U')
+libtool: link: ranlib .libs/libexpat.a
+libtool: link: ( cd ".libs" && rm -f "libexpat.la" && ln -s "../libexpat.la" "libexpat.la" )
+make[3]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/lib'
+Making all in examples
+make[3]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/examples'
+icc -DHAVE_CONFIG_H -I. -I../../src/examples -I..  -I../../src/examples/../lib -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT elements.o -MD -MP -MF .deps/elements.Tpo -c -o elements.o ../../src/examples/elements.c
+icc -DHAVE_CONFIG_H -I. -I../../src/examples -I..  -I../../src/examples/../lib -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT outline.o -MD -MP -MF .deps/outline.Tpo -c -o outline.o ../../src/examples/outline.c
+mv -f .deps/elements.Tpo .deps/elements.Po
+mv -f .deps/outline.Tpo .deps/outline.Po
+/bin/bash ../libtool  --tag=CC   --mode=link icc  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing  -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,--as-needed,--gc-sections,--print-gc-sections,--print-memory-usage,--stats -fno-strict-aliasing -o elements elements.o ../lib/libexpat.la 
+/bin/bash ../libtool  --tag=CC   --mode=link icc  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing  -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,--as-needed,--gc-sections,--print-gc-sections,--print-memory-usage,--stats -fno-strict-aliasing -o outline outline.o ../lib/libexpat.la 
+libtool: link: icc -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -Wl,-Bsymbolic-functions -Wl,-z -Wl,relro -Wl,--as-needed -Wl,--gc-sections -Wl,--print-gc-sections -Wl,--print-memory-usage -Wl,--stats -fno-strict-aliasing -o .libs/outline outline.o  ../lib/.libs/libexpat.so
+libtool: link: icc -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -Wl,-Bsymbolic-functions -Wl,-z -Wl,relro -Wl,--as-needed -Wl,--gc-sections -Wl,--print-gc-sections -Wl,--print-memory-usage -Wl,--stats -fno-strict-aliasing -o .libs/elements elements.o  ../lib/.libs/libexpat.so
+icc: warning #10237: -lcilkrts linked in dynamically, static library not available
+icc: warning #10237: -lcilkrts linked in dynamically, static library not available
+ld: removing unused section '.rodata.cst4' in file '/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o'
+ld: removing unused section '.data' in file '/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o'
+ld: removing unused section '.rodata.cst4' in file '/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o'
+ld: removing unused section '.data' in file '/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o'
+Memory region         Used Size  Region Size  %age Used
+ld: total time in link: 0.129996
+Memory region         Used Size  Region Size  %age Used
+ld: total time in link: 0.130152
+make[3]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/examples'
+Making all in tests
+make[3]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/tests'
+Making all in .
+make[4]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/tests'
+icc -DHAVE_CONFIG_H -I. -I../../src/tests -I..  -I../../src/tests/../lib -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT chardata.o -MD -MP -MF .deps/chardata.Tpo -c -o chardata.o ../../src/tests/chardata.c
+icc -DHAVE_CONFIG_H -I. -I../../src/tests -I..  -I../../src/tests/../lib -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT structdata.o -MD -MP -MF .deps/structdata.Tpo -c -o structdata.o ../../src/tests/structdata.c
+icc -DHAVE_CONFIG_H -I. -I../../src/tests -I..  -I../../src/tests/../lib -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT memcheck.o -MD -MP -MF .deps/memcheck.Tpo -c -o memcheck.o ../../src/tests/memcheck.c
+icc -DHAVE_CONFIG_H -I. -I../../src/tests -I..  -I../../src/tests/../lib -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT minicheck.o -MD -MP -MF .deps/minicheck.Tpo -c -o minicheck.o ../../src/tests/minicheck.c
+mv -f .deps/memcheck.Tpo .deps/memcheck.Po
+mv -f .deps/chardata.Tpo .deps/chardata.Po
+mv -f .deps/structdata.Tpo .deps/structdata.Po
+mv -f .deps/minicheck.Tpo .deps/minicheck.Po
+rm -f libruntests.a
+xiar cru libruntests.a chardata.o structdata.o memcheck.o minicheck.o 
+xiar: executing 'ar'
+ar: `u' modifier ignored since `D' is the default (see `U')
+ranlib libruntests.a
+make[4]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/tests'
+Making all in benchmark
+make[4]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/tests/benchmark'
+icc -DHAVE_CONFIG_H -I. -I../../../src/tests/benchmark -I../..  -I../../../src/tests/benchmark/../../lib -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT benchmark.o -MD -MP -MF .deps/benchmark.Tpo -c -o benchmark.o ../../../src/tests/benchmark/benchmark.c
+mv -f .deps/benchmark.Tpo .deps/benchmark.Po
+/bin/bash ../../libtool  --tag=CC   --mode=link icc  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing  -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,--as-needed,--gc-sections,--print-gc-sections,--print-memory-usage,--stats -fno-strict-aliasing -o benchmark benchmark.o ../../lib/libexpat.la 
+libtool: link: icc -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -Wl,-Bsymbolic-functions -Wl,-z -Wl,relro -Wl,--as-needed -Wl,--gc-sections -Wl,--print-gc-sections -Wl,--print-memory-usage -Wl,--stats -fno-strict-aliasing -o .libs/benchmark benchmark.o  ../../lib/.libs/libexpat.so
+icc: warning #10237: -lcilkrts linked in dynamically, static library not available
+ld: removing unused section '.rodata.cst4' in file '/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o'
+ld: removing unused section '.data' in file '/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o'
+Memory region         Used Size  Region Size  %age Used
+ld: total time in link: 0.129255
+make[4]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/tests/benchmark'
+make[3]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/tests'
+Making all in xmlwf
+make[3]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/xmlwf'
+icc -DHAVE_CONFIG_H -I. -I../../src/xmlwf -I..  -I../../src/xmlwf/../lib  -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmlwf-xmlwf.o -MD -MP -MF .deps/xmlwf-xmlwf.Tpo -c -o xmlwf-xmlwf.o `test -f 'xmlwf.c' || echo '../../src/xmlwf/'`xmlwf.c
+icc -DHAVE_CONFIG_H -I. -I../../src/xmlwf -I..  -I../../src/xmlwf/../lib  -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmlwf-xmlfile.o -MD -MP -MF .deps/xmlwf-xmlfile.Tpo -c -o xmlwf-xmlfile.o `test -f 'xmlfile.c' || echo '../../src/xmlwf/'`xmlfile.c
+icc -DHAVE_CONFIG_H -I. -I../../src/xmlwf -I..  -I../../src/xmlwf/../lib  -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmlwf-codepage.o -MD -MP -MF .deps/xmlwf-codepage.Tpo -c -o xmlwf-codepage.o `test -f 'codepage.c' || echo '../../src/xmlwf/'`codepage.c
+icc -DHAVE_CONFIG_H -I. -I../../src/xmlwf -I..  -I../../src/xmlwf/../lib  -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmlwf-unixfilemap.o -MD -MP -MF .deps/xmlwf-unixfilemap.Tpo -c -o xmlwf-unixfilemap.o `test -f 'unixfilemap.c' || echo '../../src/xmlwf/'`unixfilemap.c
+mv -f .deps/xmlwf-codepage.Tpo .deps/xmlwf-codepage.Po
+mv -f .deps/xmlwf-unixfilemap.Tpo .deps/xmlwf-unixfilemap.Po
+mv -f .deps/xmlwf-xmlfile.Tpo .deps/xmlwf-xmlfile.Po
+mv -f .deps/xmlwf-xmlwf.Tpo .deps/xmlwf-xmlwf.Po
+/bin/bash ../libtool  --tag=CC   --mode=link icc  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing  -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,--as-needed,--gc-sections,--print-gc-sections,--print-memory-usage,--stats -fno-strict-aliasing -o xmlwf xmlwf-xmlwf.o xmlwf-xmlfile.o xmlwf-codepage.o xmlwf-unixfilemap.o ../lib/libexpat.la 
+libtool: link: icc -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/build=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -Wl,-Bsymbolic-functions -Wl,-z -Wl,relro -Wl,--as-needed -Wl,--gc-sections -Wl,--print-gc-sections -Wl,--print-memory-usage -Wl,--stats -fno-strict-aliasing -o .libs/xmlwf xmlwf-xmlwf.o xmlwf-xmlfile.o xmlwf-codepage.o xmlwf-unixfilemap.o  ../lib/.libs/libexpat.so
+icc: warning #10237: -lcilkrts linked in dynamically, static library not available
+ld: removing unused section '.rodata.cst4' in file '/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o'
+ld: removing unused section '.data' in file '/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o'
+ld: removing unused section '.text.unknownEncodingConvert' in file '/tmp/ipo_iccvAC9Al.o'
+ld: removing unused section '.text.codepageConvert' in file '/tmp/ipo_iccvAC9Al.o'
+ld: removing unused section '.text.codepageMap' in file '/tmp/ipo_iccvAC9Al.o'
+ld: removing unused section '.text.filemap' in file '/tmp/ipo_iccvAC9Al.o'
+ld: removing unused section '.text.processFile' in file '/tmp/ipo_iccvAC9Al.o'
+Memory region         Used Size  Region Size  %age Used
+ld: total time in link: 0.134300
+make[3]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/xmlwf'
+Making all in doc
+make[3]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/doc'
+rm -f xmlwf.1
+docbook2x-man ../../src/doc/xmlwf.xml
+test -f xmlwf.1 || mv XMLWF.1 xmlwf.1
+make[3]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/doc'
+make[3]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build'
+make[3]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build'
+make[2]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build'
+make[1]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build'
+/usr/bin/make -j 8 -C buildw/lib all
+make[1]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw/lib'
+/bin/bash ../libtool  --tag=CC   --mode=compile icc -DHAVE_CONFIG_H -I. -I../../srcw/lib -I..   -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -DXML_UNICODE -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT loadlibrary.lo -MD -MP -MF .deps/loadlibrary.Tpo -c -o loadlibrary.lo ../../srcw/lib/loadlibrary.c
+/bin/bash ../libtool  --tag=CC   --mode=compile icc -DHAVE_CONFIG_H -I. -I../../srcw/lib -I..   -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -DXML_UNICODE -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmlparse.lo -MD -MP -MF .deps/xmlparse.Tpo -c -o xmlparse.lo ../../srcw/lib/xmlparse.c
+/bin/bash ../libtool  --tag=CC   --mode=compile icc -DHAVE_CONFIG_H -I. -I../../srcw/lib -I..   -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -DXML_UNICODE -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmltok.lo -MD -MP -MF .deps/xmltok.Tpo -c -o xmltok.lo ../../srcw/lib/xmltok.c
+/bin/bash ../libtool  --tag=CC   --mode=compile icc -DHAVE_CONFIG_H -I. -I../../srcw/lib -I..   -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -DXML_UNICODE -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmlrole.lo -MD -MP -MF .deps/xmlrole.Tpo -c -o xmlrole.lo ../../srcw/lib/xmlrole.c
+libtool: compile:  icc -DHAVE_CONFIG_H -I. -I../../srcw/lib -I.. -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -DXML_UNICODE -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT loadlibrary.lo -MD -MP -MF .deps/loadlibrary.Tpo -c ../../srcw/lib/loadlibrary.c  -fPIC -DPIC -o .libs/loadlibrary.o
+libtool: compile:  icc -DHAVE_CONFIG_H -I. -I../../srcw/lib -I.. -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -DXML_UNICODE -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmlparse.lo -MD -MP -MF .deps/xmlparse.Tpo -c ../../srcw/lib/xmlparse.c  -fPIC -DPIC -o .libs/xmlparse.o
+libtool: compile:  icc -DHAVE_CONFIG_H -I. -I../../srcw/lib -I.. -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -DXML_UNICODE -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmltok.lo -MD -MP -MF .deps/xmltok.Tpo -c ../../srcw/lib/xmltok.c  -fPIC -DPIC -o .libs/xmltok.o
+libtool: compile:  icc -DHAVE_CONFIG_H -I. -I../../srcw/lib -I.. -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -DXML_UNICODE -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmlrole.lo -MD -MP -MF .deps/xmlrole.Tpo -c ../../srcw/lib/xmlrole.c  -fPIC -DPIC -o .libs/xmlrole.o
+libtool: compile:  icc -DHAVE_CONFIG_H -I. -I../../srcw/lib -I.. -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -DXML_UNICODE -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT loadlibrary.lo -MD -MP -MF .deps/loadlibrary.Tpo -c ../../srcw/lib/loadlibrary.c -o loadlibrary.o >/dev/null 2>&1
+libtool: compile:  icc -DHAVE_CONFIG_H -I. -I../../srcw/lib -I.. -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -DXML_UNICODE -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmlrole.lo -MD -MP -MF .deps/xmlrole.Tpo -c ../../srcw/lib/xmlrole.c -o xmlrole.o >/dev/null 2>&1
+mv -f .deps/loadlibrary.Tpo .deps/loadlibrary.Plo
+mv -f .deps/xmlrole.Tpo .deps/xmlrole.Plo
+libtool: compile:  icc -DHAVE_CONFIG_H -I. -I../../srcw/lib -I.. -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -DXML_UNICODE -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmlparse.lo -MD -MP -MF .deps/xmlparse.Tpo -c ../../srcw/lib/xmlparse.c -o xmlparse.o >/dev/null 2>&1
+libtool: compile:  icc -DHAVE_CONFIG_H -I. -I../../srcw/lib -I.. -Wdate-time -D_FORTIFY_SOURCE=2 -DHAVE_EXPAT_CONFIG_H -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -DXML_UNICODE -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -MT xmltok.lo -MD -MP -MF .deps/xmltok.Tpo -c ../../srcw/lib/xmltok.c -o xmltok.o >/dev/null 2>&1
+mv -f .deps/xmlparse.Tpo .deps/xmlparse.Plo
+mv -f .deps/xmltok.Tpo .deps/xmltok.Plo
+/bin/bash ../libtool  --tag=CC   --mode=link icc  -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall -DXML_UNICODE -Wall -Wmissing-prototypes -Wstrict-prototypes -fexceptions -fno-strict-aliasing -no-undefined -version-info 7:8:6 -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,--as-needed,--gc-sections,--print-gc-sections,--print-memory-usage,--stats -fno-strict-aliasing -o libexpatw.la -rpath /usr/lib/x86_64-linux-gnu loadlibrary.lo xmlparse.lo xmltok.lo xmlrole.lo  
+libtool: link: icc -shared  -fPIC -DPIC  .libs/loadlibrary.o .libs/xmlparse.o .libs/xmltok.o .libs/xmlrole.o    -g -O2 -fstack-protector-strong -march=native -Wl,-Bsymbolic-functions -Wl,-z -Wl,relro -Wl,--as-needed -Wl,--gc-sections -Wl,--print-gc-sections -Wl,--print-memory-usage -Wl,--stats   -Wl,-soname -Wl,libexpatw.so.1 -o .libs/libexpatw.so.1.6.8
+icc: warning #10237: -lcilkrts linked in dynamically, static library not available
+Memory region         Used Size  Region Size  %age Used
+ld: total time in link: 0.133995
+libtool: link: (cd ".libs" && rm -f "libexpatw.so.1" && ln -s "libexpatw.so.1.6.8" "libexpatw.so.1")
+libtool: link: (cd ".libs" && rm -f "libexpatw.so" && ln -s "libexpatw.so.1.6.8" "libexpatw.so")
+libtool: link: xiar cru .libs/libexpatw.a  loadlibrary.o xmlparse.o xmltok.o xmlrole.o
+xiar: executing 'ar'
+ar: `u' modifier ignored since `D' is the default (see `U')
+libtool: link: ranlib .libs/libexpatw.a
+libtool: link: ( cd ".libs" && rm -f "libexpatw.la" && ln -s "../libexpatw.la" "libexpatw.la" )
+make[1]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw/lib'
+touch build-stamp
+ fakeroot debian/rules binary
+dh_testdir
+dh_testroot
+dh_prep
+dh_installdirs
+/usr/bin/make -C build/ install DESTDIR=/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp
+make[1]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build'
+Making install in lib
+make[2]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/lib'
+make[3]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/lib'
+ /bin/mkdir -p '/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu'
+ /bin/bash ../libtool   --mode=install /usr/bin/install -c   libexpat.la '/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu'
+libtool: install: /usr/bin/install -c .libs/libexpat.so.1.6.8 /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu/libexpat.so.1.6.8
+libtool: install: (cd /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu && { ln -s -f libexpat.so.1.6.8 libexpat.so.1 || { rm -f libexpat.so.1 && ln -s libexpat.so.1.6.8 libexpat.so.1; }; })
+libtool: install: (cd /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu && { ln -s -f libexpat.so.1.6.8 libexpat.so || { rm -f libexpat.so && ln -s libexpat.so.1.6.8 libexpat.so; }; })
+libtool: install: /usr/bin/install -c .libs/libexpat.lai /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu/libexpat.la
+libtool: install: /usr/bin/install -c .libs/libexpat.a /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu/libexpat.a
+libtool: install: chmod 644 /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu/libexpat.a
+libtool: install: ranlib /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu/libexpat.a
+libtool: warning: remember to run 'libtool --finish /usr/lib/x86_64-linux-gnu'
+ /bin/mkdir -p '/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/share/doc/expat'
+ /usr/bin/install -c -m 644 ../../src/lib/../AUTHORS ../../src/lib/../Changes '/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/share/doc/expat'
+ /bin/mkdir -p '/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/include'
+ /usr/bin/install -c -m 644 ../expat_config.h ../../src/lib/expat.h ../../src/lib/expat_external.h '/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/include'
+/usr/bin/make  install-data-hook
+make[4]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/lib'
+cd "/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/share/doc/expat" && mv -f Changes changelog
+make[4]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/lib'
+make[3]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/lib'
+make[2]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/lib'
+Making install in examples
+make[2]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/examples'
+make[3]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/examples'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/examples'
+make[2]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/examples'
+Making install in tests
+make[2]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/tests'
+Making install in .
+make[3]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/tests'
+make[4]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/tests'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/tests'
+make[3]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/tests'
+Making install in benchmark
+make[3]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/tests/benchmark'
+make[4]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/tests/benchmark'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/tests/benchmark'
+make[3]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/tests/benchmark'
+make[2]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/tests'
+Making install in xmlwf
+make[2]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/xmlwf'
+make[3]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/xmlwf'
+ /bin/mkdir -p '/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/bin'
+  /bin/bash ../libtool   --mode=install /usr/bin/install -c xmlwf '/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/bin'
+libtool: warning: '../lib/libexpat.la' has not been installed in '/usr/lib/x86_64-linux-gnu'
+libtool: install: /usr/bin/install -c .libs/xmlwf /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/bin/xmlwf
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/xmlwf'
+make[2]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/xmlwf'
+Making install in doc
+make[2]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/doc'
+make[3]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/doc'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /bin/mkdir -p '/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/share/man/man1'
+ /usr/bin/install -c -m 644 xmlwf.1 '/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/share/man/man1'
+make[3]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/doc'
+make[2]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build/doc'
+make[2]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build'
+make[3]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /bin/mkdir -p '/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu/pkgconfig'
+ /usr/bin/install -c -m 644 expat.pc '/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu/pkgconfig'
+make[3]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build'
+make[2]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build'
+make[1]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/build'
+/usr/bin/make -C buildw/lib install DESTDIR=/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp APIHEADER=
+make[1]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw/lib'
+make[2]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw/lib'
+ /bin/mkdir -p '/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu'
+ /bin/bash ../libtool   --mode=install /usr/bin/install -c   libexpatw.la '/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu'
+libtool: install: /usr/bin/install -c .libs/libexpatw.so.1.6.8 /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu/libexpatw.so.1.6.8
+libtool: install: (cd /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu && { ln -s -f libexpatw.so.1.6.8 libexpatw.so.1 || { rm -f libexpatw.so.1 && ln -s libexpatw.so.1.6.8 libexpatw.so.1; }; })
+libtool: install: (cd /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu && { ln -s -f libexpatw.so.1.6.8 libexpatw.so || { rm -f libexpatw.so && ln -s libexpatw.so.1.6.8 libexpatw.so; }; })
+libtool: install: /usr/bin/install -c .libs/libexpatw.lai /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu/libexpatw.la
+libtool: install: /usr/bin/install -c .libs/libexpatw.a /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu/libexpatw.a
+libtool: install: chmod 644 /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu/libexpatw.a
+libtool: install: ranlib /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu/libexpatw.a
+libtool: warning: remember to run 'libtool --finish /usr/lib/x86_64-linux-gnu'
+ /bin/mkdir -p '/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/share/doc/expat'
+ /usr/bin/install -c -m 644 ../../srcw/lib/../AUTHORS ../../srcw/lib/../Changes '/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/share/doc/expat'
+ /bin/mkdir -p '/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/include'
+ /usr/bin/install -c -m 644 ../expat_config.h ../../srcw/lib/expat.h ../../srcw/lib/expat_external.h '/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/include'
+/usr/bin/make  install-data-hook
+make[3]: Entering directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw/lib'
+cd "/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/share/doc/expat" && mv -f Changes changelog
+make[3]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw/lib'
+make[2]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw/lib'
+make[1]: Leaving directory '/home/richard/debs/NONGIT/expat/expat-2.2.6/buildw/lib'
+# Move libexpat.so.* to /lib so that zfsutils can use it.
+mkdir -p /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/lib/x86_64-linux-gnu
+mv /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu/libexpat.so.* \
+	/home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/lib/x86_64-linux-gnu/
+for i in /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/tmp/usr/lib/x86_64-linux-gnu/libexpat.so ; do \
+	dest=$(readlink $i) ; \
+	rm -f $i ; \
+	ln -s /lib/x86_64-linux-gnu/$dest $i ; \
+done
+mkdir -p debian/tmp/usr/include/x86_64-linux-gnu
+mv debian/tmp/usr/include/expat_config.h debian/tmp/usr/include/x86_64-linux-gnu/.
+dh_testdir
+dh_testroot
+dh_install -a --sourcedir=debian/tmp
+rm debian/libexpat1-dev/usr/share/doc/libexpat1-dev/expat.html/Makefile.am
+dh_installdocs -a
+dh_installman -a
+dh_installexamples -a
+dh_installchangelogs -a expat/Changes
+dh_link -a
+dh_strip -a
+dh_compress -a
+ERROR: ld.so: object 'libfakeroot-sysv.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ERROR: ld.so: object 'libfakeroot-sysv.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ERROR: ld.so: object 'libfakeroot-sysv.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ERROR: ld.so: object 'libfakeroot-sysv.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+dh_fixperms -a
+chmod 644 /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/libexpat1-dev/usr/share/doc/libexpat1-dev/examples/* \
+          /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/libexpat1-dev/usr/share/aclocal/*
+dh_makeshlibs -a -V --add-udeb=libexpat1-udeb
+ERROR: ld.so: object 'libfakeroot-sysv.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ERROR: ld.so: object 'libfakeroot-sysv.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+dh_makeshlibs: The provided debian/libexpat1.shlibs file overwrites -V
+dpkg-gensymbols: warning: some new symbols appeared in the symbols file: see diff output below
+dpkg-gensymbols: warning: debian/libexpat1/DEBIAN/symbols doesn't match completely debian/libexpat1.symbols
+--- debian/libexpat1.symbols (libexpat1_2.2.6-1_amd64)
++++ dpkg-gensymbolsjtDXJy	2018-12-02 23:48:54.817757301 +0100
+@@ -81,6 +81,38 @@
+  XmlUtf16Encode@Base 2.0.1
+  XmlUtf8Encode@Base 2.0.1
+  _INTERNAL_trim_to_complete_utf8_characters@Base 2.2.5
++ __cacheSize@Base 2.2.6-1
++ __intel_avx_rep_memcpy@Base 2.2.6-1
++ __intel_avx_rep_memset@Base 2.2.6-1
++ __intel_memcpy@Base 2.2.6-1
++ __intel_memset@Base 2.2.6-1
++ __intel_mic_avx512f_memcpy@Base 2.2.6-1
++ __intel_mic_avx512f_memset@Base 2.2.6-1
++ __intel_new_memcpy@Base 2.2.6-1
++ __intel_new_memset@Base 2.2.6-1
++ __intel_ssse3_memcpy@Base 2.2.6-1
++ __intel_ssse3_memmove@Base 2.2.6-1
++ __intel_ssse3_rep_memcpy@Base 2.2.6-1
++ __intel_ssse3_rep_memmove@Base 2.2.6-1
++ _intel_fast_memcmp@Base 2.2.6-1
++ _intel_fast_memcpy.A@Base 2.2.6-1
++ _intel_fast_memcpy.J@Base 2.2.6-1
++ _intel_fast_memcpy.M@Base 2.2.6-1
++ _intel_fast_memcpy.P@Base 2.2.6-1
++ _intel_fast_memcpy.V@Base 2.2.6-1
++ _intel_fast_memcpy.Z@Base 2.2.6-1
++ _intel_fast_memcpy.a@Base 2.2.6-1
++ _intel_fast_memcpy@Base 2.2.6-1
++ _intel_fast_memmove.A@Base 2.2.6-1
++ _intel_fast_memmove.M@Base 2.2.6-1
++ _intel_fast_memmove.P@Base 2.2.6-1
++ _intel_fast_memmove@Base 2.2.6-1
++ _intel_fast_memset.A@Base 2.2.6-1
++ _intel_fast_memset.J@Base 2.2.6-1
++ _intel_fast_memset.V@Base 2.2.6-1
++ _intel_fast_memset.Z@Base 2.2.6-1
++ _intel_fast_memset.a@Base 2.2.6-1
++ _intel_fast_memset@Base 2.2.6-1
+ libexpatw.so.1 libexpat1 #MINVER#
+  XML_DefaultCurrent@Base 2.0.1
+  XML_ErrorString@Base 2.0.1
+@@ -164,3 +196,35 @@
+  XmlUtf16Encode@Base 2.0.1
+  XmlUtf8Encode@Base 2.0.1
+  _INTERNAL_trim_to_complete_utf8_characters@Base 2.2.5
++ __cacheSize@Base 2.2.6-1
++ __intel_avx_rep_memcpy@Base 2.2.6-1
++ __intel_avx_rep_memset@Base 2.2.6-1
++ __intel_memcpy@Base 2.2.6-1
++ __intel_memset@Base 2.2.6-1
++ __intel_mic_avx512f_memcpy@Base 2.2.6-1
++ __intel_mic_avx512f_memset@Base 2.2.6-1
++ __intel_new_memcpy@Base 2.2.6-1
++ __intel_new_memset@Base 2.2.6-1
++ __intel_ssse3_memcpy@Base 2.2.6-1
++ __intel_ssse3_memmove@Base 2.2.6-1
++ __intel_ssse3_rep_memcpy@Base 2.2.6-1
++ __intel_ssse3_rep_memmove@Base 2.2.6-1
++ _intel_fast_memcmp@Base 2.2.6-1
++ _intel_fast_memcpy.A@Base 2.2.6-1
++ _intel_fast_memcpy.J@Base 2.2.6-1
++ _intel_fast_memcpy.M@Base 2.2.6-1
++ _intel_fast_memcpy.P@Base 2.2.6-1
++ _intel_fast_memcpy.V@Base 2.2.6-1
++ _intel_fast_memcpy.Z@Base 2.2.6-1
++ _intel_fast_memcpy.a@Base 2.2.6-1
++ _intel_fast_memcpy@Base 2.2.6-1
++ _intel_fast_memmove.A@Base 2.2.6-1
++ _intel_fast_memmove.M@Base 2.2.6-1
++ _intel_fast_memmove.P@Base 2.2.6-1
++ _intel_fast_memmove@Base 2.2.6-1
++ _intel_fast_memset.A@Base 2.2.6-1
++ _intel_fast_memset.J@Base 2.2.6-1
++ _intel_fast_memset.V@Base 2.2.6-1
++ _intel_fast_memset.Z@Base 2.2.6-1
++ _intel_fast_memset.a@Base 2.2.6-1
++ _intel_fast_memset@Base 2.2.6-1
+ERROR: ld.so: object 'libfakeroot-sysv.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+dh_installdeb -a
+dh_shlibdeps -a -l /home/richard/debs/NONGIT/expat/expat-2.2.6/debian/libexpat1/usr/lib/x86_64-linux-gnu
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/libexpat1-udeb/usr/lib/libexpat.so.1.6.8 was not linked against libdl.so.2 (it uses none of the library's symbols)
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/libexpat1-udeb/usr/lib/libexpat.so.1.6.8 was not linked against libgcc_s.so.1 (it uses none of the library's symbols)
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/libexpat1/usr/lib/x86_64-linux-gnu/libexpatw.so.1.6.8 debian/libexpat1/lib/x86_64-linux-gnu/libexpat.so.1.6.8 were not linked against libdl.so.2 (they use none of the library's symbols)
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/libexpat1/usr/lib/x86_64-linux-gnu/libexpatw.so.1.6.8 debian/libexpat1/lib/x86_64-linux-gnu/libexpat.so.1.6.8 were not linked against libgcc_s.so.1 (they use none of the library's symbols)
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/expat/usr/bin/xmlwf was not linked against libdl.so.2 (it uses none of the library's symbols)
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/expat/usr/bin/xmlwf was not linked against libgcc_s.so.1 (it uses none of the library's symbols)
+dh_gencontrol -a
+dh_md5sums -a
+ERROR: ld.so: object 'libfakeroot-sysv.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ERROR: ld.so: object 'libfakeroot-sysv.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ERROR: ld.so: object 'libfakeroot-sysv.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ERROR: ld.so: object 'libfakeroot-sysv.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ERROR: ld.so: object 'libfakeroot-sysv.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+dh_builddeb -a
+dpkg-deb: building package 'libexpat1-dev' in '../libexpat1-dev_2.2.6-1_amd64.deb'.
+dpkg-deb: building package 'libexpat1' in '../libexpat1_2.2.6-1_amd64.deb'.
+dpkg-deb: building package 'libexpat1-dbgsym' in '../libexpat1-dbgsym_2.2.6-1_amd64.deb'.
+dpkg-deb: building package 'expat' in '../expat_2.2.6-1_amd64.deb'.
+dpkg-deb: building package 'expat-dbgsym' in '../expat-dbgsym_2.2.6-1_amd64.deb'.
+dpkg-deb: building package 'libexpat1-udeb' in 'debian/.debhelper/scratch-space/build-libexpat1-udeb/libexpat1-udeb_2.2.6-1_amd64.deb'.
+	Renaming libexpat1-udeb_2.2.6-1_amd64.deb to libexpat1-udeb_2.2.6-1_amd64.udeb
+ dpkg-genbuildinfo --build=binary
+ dpkg-genchanges --build=binary >../expat_2.2.6-1_amd64.changes
+dpkg-genchanges: info: binary-only upload (no source code included)
+ dpkg-source --after-build .
+dpkg-buildpackage: info: binary-only upload (no source included)
+Now running lintian expat_2.2.6-1_amd64.changes ...
+E: libexpat1: symbols-file-contains-current-version-with-debian-revision on symbol __cacheSize@Base and 63 others
+W: expat: hardening-no-pie usr/bin/xmlwf
+Finished running lintian.

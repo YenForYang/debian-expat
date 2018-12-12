@@ -1,0 +1,72 @@
+xmltok.lo: ../../src/lib/xmltok.c /usr/include/stdc-predef.h \
+ /opt/intel/compilers_and_libraries_2019.1.144/linux/compiler/include/stddef.h \
+ /usr/include/string.h /usr/include/bits/libc-header-start.h \
+ /usr/include/features.h /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h \
+ /usr/include/bits/long-double.h /usr/include/gnu/stubs.h \
+ /usr/include/gnu/stubs-64.h /usr/include/bits/types/locale_t.h \
+ /usr/include/bits/types/__locale_t.h /usr/include/strings.h \
+ /usr/include/bits/strings_fortified.h /usr/include/bits/string_fortified.h \
+ /opt/intel/compilers_and_libraries_2019.1.144/linux/compiler/include/stdbool.h \
+ ../expat_config.h ../../src/lib/expat_external.h ../../src/lib/internal.h \
+ ../../src/lib/xmltok.h ../../src/lib/nametab.h ../../src/lib/xmltok_impl.h \
+ ../../src/lib/ascii.h ../../src/lib/xmltok_impl.c ../../src/lib/asciitab.h \
+ ../../src/lib/utf8tab.h ../../src/lib/iasciitab.h ../../src/lib/latin1tab.h \
+ ../../src/lib/xmltok_ns.c
+
+/usr/include/stdc-predef.h:
+
+/opt/intel/compilers_and_libraries_2019.1.144/linux/compiler/include/stddef.h:
+
+/usr/include/string.h:
+
+/usr/include/bits/libc-header-start.h:
+
+/usr/include/features.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/bits/wordsize.h:
+
+/usr/include/bits/long-double.h:
+
+/usr/include/gnu/stubs.h:
+
+/usr/include/gnu/stubs-64.h:
+
+/usr/include/bits/types/locale_t.h:
+
+/usr/include/bits/types/__locale_t.h:
+
+/usr/include/strings.h:
+
+/usr/include/bits/strings_fortified.h:
+
+/usr/include/bits/string_fortified.h:
+
+/opt/intel/compilers_and_libraries_2019.1.144/linux/compiler/include/stdbool.h:
+
+../expat_config.h:
+
+../../src/lib/expat_external.h:
+
+../../src/lib/internal.h:
+
+../../src/lib/xmltok.h:
+
+../../src/lib/nametab.h:
+
+../../src/lib/xmltok_impl.h:
+
+../../src/lib/ascii.h:
+
+../../src/lib/xmltok_impl.c:
+
+../../src/lib/asciitab.h:
+
+../../src/lib/utf8tab.h:
+
+../../src/lib/iasciitab.h:
+
+../../src/lib/latin1tab.h:
+
+../../src/lib/xmltok_ns.c:

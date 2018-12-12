@@ -1,0 +1,20 @@
+xmlrole.lo: ../../srcw/lib/xmlrole.c /usr/include/stdc-predef.h \
+ /opt/intel/compilers_and_libraries_2019.1.144/linux/compiler/include/stddef.h \
+ ../expat_config.h ../../srcw/lib/expat_external.h ../../srcw/lib/internal.h \
+ ../../srcw/lib/xmlrole.h ../../srcw/lib/xmltok.h ../../srcw/lib/ascii.h
+
+/usr/include/stdc-predef.h:
+
+/opt/intel/compilers_and_libraries_2019.1.144/linux/compiler/include/stddef.h:
+
+../expat_config.h:
+
+../../srcw/lib/expat_external.h:
+
+../../srcw/lib/internal.h:
+
+../../srcw/lib/xmlrole.h:
+
+../../srcw/lib/xmltok.h:
+
+../../srcw/lib/ascii.h:

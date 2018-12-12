@@ -1,0 +1,13 @@
+Package: libexpat1-dbgsym
+Source: expat
+Version: 2.2.6-1
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Laszlo Boszormenyi (GCS) <gcs@debian.org>
+Installed-Size: 203
+Depends: libexpat1 (= 2.2.6-1)
+Section: debug
+Priority: optional
+Multi-Arch: same
+Description: debug symbols for libexpat1
+Build-Ids: 585e994ba11444d21500359b7ecf2d3d778b14db 9ab12094b25ec355eece9691158d04ac3566242c

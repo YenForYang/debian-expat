@@ -1,0 +1,72 @@
+xmltok.lo: ../../srcw/lib/xmltok.c /usr/include/stdc-predef.h \
+ /opt/intel/compilers_and_libraries_2019.1.144/linux/compiler/include/stddef.h \
+ /usr/include/string.h /usr/include/bits/libc-header-start.h \
+ /usr/include/features.h /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h \
+ /usr/include/bits/long-double.h /usr/include/gnu/stubs.h \
+ /usr/include/gnu/stubs-64.h /usr/include/bits/types/locale_t.h \
+ /usr/include/bits/types/__locale_t.h /usr/include/strings.h \
+ /usr/include/bits/strings_fortified.h /usr/include/bits/string_fortified.h \
+ /opt/intel/compilers_and_libraries_2019.1.144/linux/compiler/include/stdbool.h \
+ ../expat_config.h ../../srcw/lib/expat_external.h ../../srcw/lib/internal.h \
+ ../../srcw/lib/xmltok.h ../../srcw/lib/nametab.h ../../srcw/lib/xmltok_impl.h \
+ ../../srcw/lib/ascii.h ../../srcw/lib/xmltok_impl.c ../../srcw/lib/asciitab.h \
+ ../../srcw/lib/utf8tab.h ../../srcw/lib/iasciitab.h ../../srcw/lib/latin1tab.h \
+ ../../srcw/lib/xmltok_ns.c
+
+/usr/include/stdc-predef.h:
+
+/opt/intel/compilers_and_libraries_2019.1.144/linux/compiler/include/stddef.h:
+
+/usr/include/string.h:
+
+/usr/include/bits/libc-header-start.h:
+
+/usr/include/features.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/bits/wordsize.h:
+
+/usr/include/bits/long-double.h:
+
+/usr/include/gnu/stubs.h:
+
+/usr/include/gnu/stubs-64.h:
+
+/usr/include/bits/types/locale_t.h:
+
+/usr/include/bits/types/__locale_t.h:
+
+/usr/include/strings.h:
+
+/usr/include/bits/strings_fortified.h:
+
+/usr/include/bits/string_fortified.h:
+
+/opt/intel/compilers_and_libraries_2019.1.144/linux/compiler/include/stdbool.h:
+
+../expat_config.h:
+
+../../srcw/lib/expat_external.h:
+
+../../srcw/lib/internal.h:
+
+../../srcw/lib/xmltok.h:
+
+../../srcw/lib/nametab.h:
+
+../../srcw/lib/xmltok_impl.h:
+
+../../srcw/lib/ascii.h:
+
+../../srcw/lib/xmltok_impl.c:
+
+../../srcw/lib/asciitab.h:
+
+../../srcw/lib/utf8tab.h:
+
+../../srcw/lib/iasciitab.h:
+
+../../srcw/lib/latin1tab.h:
+
+../../srcw/lib/xmltok_ns.c:

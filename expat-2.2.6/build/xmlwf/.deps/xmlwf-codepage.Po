@@ -1,0 +1,8 @@
+xmlwf-codepage.o: ../../src/xmlwf/codepage.c /usr/include/stdc-predef.h \
+ ../../src/xmlwf/codepage.h ../../src/xmlwf/../lib/internal.h
+
+/usr/include/stdc-predef.h:
+
+../../src/xmlwf/codepage.h:
+
+../../src/xmlwf/../lib/internal.h:

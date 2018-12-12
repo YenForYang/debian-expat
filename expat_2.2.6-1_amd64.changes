@@ -1,0 +1,47 @@
+Format: 1.8
+Date: Wed, 15 Aug 2018 15:18:15 +0000
+Source: expat
+Binary: libexpat1-dev libexpat1 libexpat1-udeb expat
+Built-For-Profiles: nobiarch nocheck
+Architecture: amd64
+Version: 2.2.6-1
+Distribution: unstable
+Urgency: medium
+Maintainer: Laszlo Boszormenyi (GCS) <gcs@debian.org>
+Changed-By: Laszlo Boszormenyi (GCS) <gcs@debian.org>
+Description:
+ expat      - XML parsing C library - example application
+ libexpat1  - XML parsing C library - runtime library
+ libexpat1-dev - XML parsing C library - development kit
+ libexpat1-udeb - XML parsing C library - runtime library (udeb)
+Changes:
+ expat (2.2.6-1) unstable; urgency=medium
+ .
+   * New upstream release.
+   * Disable Vcs-* fields for now.
+   * Update Standards-Version to 4.1.5 .
+Checksums-Sha1:
+ 822617cc8193ce95a8fb8aab21e77bb3a5bee6ff 18168 expat-dbgsym_2.2.6-1_amd64.deb
+ 88e598dba94853360bb1d811aedbf2ea00a3e477 7749 expat_2.2.6-1_amd64.buildinfo
+ 20ecd62b20b26871e01d7ec15d95cb93a78b2383 39712 expat_2.2.6-1_amd64.deb
+ 09c986d5e019cceafa057f5776164ea60e654c25 154360 libexpat1-dbgsym_2.2.6-1_amd64.deb
+ 8b5170de81d7595f175cbd44a8e4b42c3c471a32 1031900 libexpat1-dev_2.2.6-1_amd64.deb
+ dec827ae061b821d6b46c10ec1fc2a42409a4cc3 81792 libexpat1-udeb_2.2.6-1_amd64.udeb
+ 55d0407576f569a52a8e0d521fd72fab9aead155 125792 libexpat1_2.2.6-1_amd64.deb
+Checksums-Sha256:
+ 554456197840a6d3ed31161c46cd719c4bcdad2070ee2a2fc74c009d66a01264 18168 expat-dbgsym_2.2.6-1_amd64.deb
+ c11debb79a3d997d089180102f121de1937abc9f0c569062942ff781dbb271d5 7749 expat_2.2.6-1_amd64.buildinfo
+ 1cc5d1c854abf9e05418091819d333c791c00fb79a0b3cf9c661256b13550167 39712 expat_2.2.6-1_amd64.deb
+ 9bd9423df60307319fa77935f24424be16b01c566723c90e136856e9cb92b516 154360 libexpat1-dbgsym_2.2.6-1_amd64.deb
+ 4f62d3a4d8b649035a745d6f8a84054519b5a8b3c81ee110e34745217b3841de 1031900 libexpat1-dev_2.2.6-1_amd64.deb
+ e8b05df0e56cd8346743fb37801e22eb438f11f9073d446c35e2dc5203c289ee 81792 libexpat1-udeb_2.2.6-1_amd64.udeb
+ da2d577e3fca831424841c03364359ea1b2bd5f354e055364287ffbcbf7cd9cb 125792 libexpat1_2.2.6-1_amd64.deb
+Files:
+ 58c10f214bbf5ff1fbc2232b0a726c69 18168 debug optional expat-dbgsym_2.2.6-1_amd64.deb
+ 10039a61bc2071b0a33a2b19c7b478f9 7749 text optional expat_2.2.6-1_amd64.buildinfo
+ f39af59c35e7e1b6d5f07b48bebe9fdd 39712 text optional expat_2.2.6-1_amd64.deb
+ ba4bb7232cf0e452c2fb52e2179962a1 154360 debug optional libexpat1-dbgsym_2.2.6-1_amd64.deb
+ a49c003413b7e045b8be9d63cdcf3fbd 1031900 libdevel optional libexpat1-dev_2.2.6-1_amd64.deb
+ 1485e921c2de77ad02204fb67991ee5e 81792 debian-installer optional libexpat1-udeb_2.2.6-1_amd64.udeb
+ f016e5fac92431666b1713feb5ec448a 125792 libs optional libexpat1_2.2.6-1_amd64.deb
+Package-Type: udeb
